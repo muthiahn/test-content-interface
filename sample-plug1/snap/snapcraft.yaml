@@ -11,6 +11,7 @@ confinement: strict
 apps:
   test:
     command: plug-exec.sh
+
 plugs:
   myplug:
     interface: content
@@ -18,7 +19,9 @@ plugs:
     target: $SNAP/slot-writeable
 
 parts:
+
   myplugpart:
+    after: [mywrite]
     source: myplugpart
     plugin: dump
 
