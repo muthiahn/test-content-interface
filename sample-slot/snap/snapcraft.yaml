@@ -1,0 +1,24 @@
+name: slot
+base: core18
+version: '0.1'
+summary: Snapcraft demo for content interface
+description: |
+  Simple snap to exercise content slot
+
+grade: stable 
+confinement: strict
+
+apps:
+  test:
+    command: slot-exec.sh
+slots:
+  myslot:
+    interface: content
+    content: writable-data
+    write:
+      - $SNAP/cfg
+
+parts:
+  shared:
+    source: shared
+    plugin: dump

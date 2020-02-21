@@ -1,0 +1,29 @@
+name: plug1
+base: core18
+version: '0.1'
+summary: Snapcraft demo for plug interface
+description: |
+  Simple snap to exercise snapcraft apps
+
+grade: stable 
+confinement: strict
+
+apps:
+  test:
+    command: plug-exec.sh
+plugs:
+  myplug:
+    interface: content
+    content: writable-data
+    target: $SNAP/slot-writeable
+
+parts:
+  myplugpart:
+    source: myplugpart
+    plugin: dump
+
+  mywrite:
+    plugin: dump
+    source: mywrite
+    organize:
+      "*": mywrite/
